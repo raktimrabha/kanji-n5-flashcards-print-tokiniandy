@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printable Kanji Flashcards</title>
+    <!-- Importing a beautiful Japanese font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;900&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @media print {
+            .no-print { display: none; }
+            body { 
+                background: white; 
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .page-break { page-break-after: always; }
+        }
+
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 210mm; /* A4 width */
+            margin: 0 auto;
+            background: white;
+            padding: 10mm;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* Grid for 8 cards per page (2 columns x 4 rows) */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px; /* Space between the card PAIRS */
+            margin-bottom: 20px;
+        }
+
+        /* The Card Wrapper (Invisible container holding the two boxes) */
+        .flashcard-wrapper {
+            display: flex;
+            height: 160px; /* Fixed height for consistency */
+            page-break-inside: avoid;
+            align-items: stretch;
+            gap: 4px; /* The gap between Kanji Box and Meaning Box */
+        }
+
+        /* Common styles for the separate boxes */
+        .box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            position: relative;
+            border: 2px solid #333; /* Border is now on the individual box */
+            border-radius: 4px;     /* Slight rounded corner for nicer look */
+        }
+
+        /* FRONT BOX (Kanji) */
+        .front {
+            font-family: 'Noto Serif JP', serif;
+            background-color: #fff;
+        }
+        .kanji-main {
+            font-size: 58px; /* Slightly adjusted to fit new box constraint */
+            font-weight: 900;
+            line-height: 1;
+            color: #000;
+        }
+
+        /* BACK BOX (Info) */
+        .back {
+            text-align: left;
+            align-items: flex-start;
+            padding-left: 12px;
+            background-color: #fff;
+        }
+        .meaning-main {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            color: #2c3e50;
+        }
+        .detail-row {
+            font-size: 11px;
+            margin-bottom: 4px;
+            color: #555;
+        }
+        .label {
+            font-weight: bold;
+            color: #888;
+            font-size: 9px;
+            text-transform: uppercase;
+            margin-right: 5px;
+        }
+        .readings {
+            font-size: 10px;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* Instructions Section */
+        .instructions {
+            background: #e1f5fe;
+            border: 1px solid #81d4fa;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        button:hover { background-color: #45a049; }
+
+    </style>
+</head>
+<body>
+
+    <div class="no-print">
+        <h1>🖨️ Ready to Print (Split Box Style)</h1>
+        <div class="instructions">
+            <strong>How to assemble:</strong>
+            <ol>
+                <li>Click the green <strong>Print</strong> button below.</li>
+                <li>You will see two separate boxes for each flashcard.</li>
+                <li><strong>Cut</strong> around the pair.</li>
+                <li><strong>Fold</strong> in the small gap between the two boxes.</li>
+                <li>Use glue or tape to stick them back-to-back.</li>
+            </ol>
+        </div>
+        <button onclick="window.print()">Print Flashcards</button>
+    </div>
+
+    <div class="container">
+        <div class="card-grid">
+
+            <!-- Card 1 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">一</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">One</div>
+                    <div class="detail-row"><span class="label">Radical:</span> One (一)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Ground</div>
+                    <div class="readings">On: Ichi, Itsu | Kun: Hito</div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">二</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Two</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Two (二)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Two</div>
+                    <div class="readings">On: Ni | Kun: Futa</div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">三</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Three</div>
+                    <div class="detail-row"><span class="label">Radical:</span> One (一)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> One, Two</div>
+                    <div class="readings">On: San | Kun: Mi</div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">四</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Four</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Box (囗)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Box, Legs</div>
+                    <div class="readings">On: Shi | Kun: Yon</div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">五</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Five</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Two (二)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Two, Gun</div>
+                    <div class="readings">On: Go | Kun: Itsu</div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">六</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Six</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Legs (八)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Lid, Legs</div>
+                    <div class="readings">On: Roku | Kun: Mu</div>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">七</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Seven</div>
+                    <div class="detail-row"><span class="label">Radical:</span> One (一)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> One, Hook</div>
+                    <div class="readings">On: Shichi | Kun: Nana</div>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">八</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Eight</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Legs (八)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Legs</div>
+                    <div class="readings">On: Hachi | Kun: Ya</div>
+                </div>
+            </div>
+
+        </div> <!-- End Page 1 Grid -->
+        
+        <!-- Page Break for Printing -->
+        <div class="page-break"></div>
+
+        <div class="card-grid">
+            
+            <!-- Card 9 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">九</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Nine</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Second (乙)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Slide, Hook</div>
+                    <div class="readings">On: Kyuu, Ku | Kun: Kokono</div>
+                </div>
+            </div>
+
+            <!-- Card 10 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">十</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Ten</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Ten (十)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Cross</div>
+                    <div class="readings">On: Juu | Kun: To</div>
+                </div>
+            </div>
+
+            <!-- Card 11 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">口</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Mouth</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Mouth (口)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Mouth</div>
+                    <div class="readings">On: Kou | Kun: Kuchi</div>
+                </div>
+            </div>
+
+            <!-- Card 12 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">日</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Sun / Day</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Sun (日)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Sun</div>
+                    <div class="readings">On: Nichi, Jitsu | Kun: Hi</div>
+                </div>
+            </div>
+
+            <!-- Card 13 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">月</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Moon</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Moon (月)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Moon</div>
+                    <div class="readings">On: Getsu | Kun: Tsuki</div>
+                </div>
+            </div>
+
+            <!-- Card 14 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">火</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Fire</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Fire (火)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Fire</div>
+                    <div class="readings">On: Ka | Kun: Hi</div>
+                </div>
+            </div>
+
+            <!-- Card 15 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">水</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Water</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Water (水)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Water</div>
+                    <div class="readings">On: Sui | Kun: Mizu</div>
+                </div>
+            </div>
+
+            <!-- Card 16 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">木</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Tree</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Tree (木)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Tree</div>
+                    <div class="readings">On: Moku | Kun: Ki</div>
+                </div>
+            </div>
+
+        </div> <!-- End Page 2 Grid -->
+
+        <div class="page-break"></div>
+
+        <div class="card-grid">
+
+            <!-- Card 17 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">金</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Gold / Money</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Gold (金)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Person, King</div>
+                    <div class="readings">On: Kin | Kun: Kane</div>
+                </div>
+            </div>
+
+            <!-- Card 18 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">土</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Soil / Dirt</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Earth (土)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Cross, Ground</div>
+                    <div class="readings">On: Do | Kun: Tsuchi</div>
+                </div>
+            </div>
+
+            <!-- Card 19 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">白</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">White</div>
+                    <div class="detail-row"><span class="label">Radical:</span> White (白)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Sun, Drop</div>
+                    <div class="readings">On: Haku | Kun: Shiro</div>
+                </div>
+            </div>
+
+            <!-- Card 20 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">百</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Hundred</div>
+                    <div class="detail-row"><span class="label">Radical:</span> White (白)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> One, White</div>
+                    <div class="readings">On: Hyaku | Kun: -</div>
+                </div>
+            </div>
+
+            <!-- Card 21 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">千</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Thousand</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Ten (十)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Drop, Ten</div>
+                    <div class="readings">On: Sen | Kun: Chi</div>
+                </div>
+            </div>
+
+            <!-- Card 22 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">万</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Ten Thousand</div>
+                    <div class="detail-row"><span class="label">Radical:</span> One (一)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> One, Box</div>
+                    <div class="readings">On: Man | Kun: -</div>
+                </div>
+            </div>
+
+            <!-- Card 23 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">円</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Yen / Circle</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Enclosure (冂)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Lid, Head</div>
+                    <div class="readings">On: En | Kun: Maru</div>
+                </div>
+            </div>
+
+            <!-- Card 24 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">上</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Up / Above</div>
+                    <div class="detail-row"><span class="label">Radical:</span> One (一)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Divining Rod</div>
+                    <div class="readings">On: Jou | Kun: Ue</div>
+                </div>
+            </div>
+
+        </div> <!-- End Page 3 Grid -->
+
+        <div class="page-break"></div>
+
+        <div class="card-grid">
+
+            <!-- Card 25 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">下</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Down / Below</div>
+                    <div class="detail-row"><span class="label">Radical:</span> One (一)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Drop, Rod</div>
+                    <div class="readings">On: Ka | Kun: Shita</div>
+                </div>
+            </div>
+
+            <!-- Card 26 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">人</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Person</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Person (人)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Person</div>
+                    <div class="readings">On: Jin, Nin | Kun: Hito</div>
+                </div>
+            </div>
+
+            <!-- Card 27 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">子</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Child</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Child (子)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Child</div>
+                    <div class="readings">On: Shi | Kun: Ko</div>
+                </div>
+            </div>
+
+            <!-- Card 28 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">王</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">King</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Jade (玉)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> King</div>
+                    <div class="readings">On: Ou | Kun: -</div>
+                </div>
+            </div>
+
+            <!-- Card 29 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">目</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Eye</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Eye (目)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Eye</div>
+                    <div class="readings">On: Moku | Kun: Me</div>
+                </div>
+            </div>
+
+            <!-- Card 30 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">耳</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Ear</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Ear (耳)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Ear</div>
+                    <div class="readings">On: Ji | Kun: Mimi</div>
+                </div>
+            </div>
+
+            <!-- Card 31 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">手</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Hand</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Hand (手)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Hand</div>
+                    <div class="readings">On: Shu | Kun: Te</div>
+                </div>
+            </div>
+
+            <!-- Card 32 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">足</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Foot / Leg</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Foot (足)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Mouth, Stop</div>
+                    <div class="readings">On: Soku | Kun: Ashi</div>
+                </div>
+            </div>
+
+        </div> <!-- End Page 4 Grid -->
+
+        <div class="page-break"></div>
+
+        <div class="card-grid">
+
+            <!-- Card 33 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">見</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">To See / Look</div>
+                    <div class="detail-row"><span class="label">Radical:</span> See (見)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Eye, Legs</div>
+                    <div class="readings">On: Ken | Kun: Mi-ru</div>
+                </div>
+            </div>
+
+            <!-- Card 34 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">休</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">To Rest</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Person (亻)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Person, Tree</div>
+                    <div class="readings">On: Kyuu | Kun: Yasu-mu</div>
+                </div>
+            </div>
+
+            <!-- Card 35 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">止</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">To Stop</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Stop (止)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Stop</div>
+                    <div class="readings">On: Shi | Kun: To-maru</div>
+                </div>
+            </div>
+
+            <!-- Card 36 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">学</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">To Learn</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Child (子)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> School, Child</div>
+                    <div class="readings">On: Gaku | Kun: Mana-bu</div>
+                </div>
+            </div>
+
+            <!-- Card 37 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">玉</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Jewel / Ball</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Jade (玉)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> King, Drop</div>
+                    <div class="readings">On: Gyoku | Kun: Tama</div>
+                </div>
+            </div>
+
+            <!-- Card 38 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">国</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Country</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Box (囗)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Box, Jewel</div>
+                    <div class="readings">On: Koku | Kun: Kuni</div>
+                </div>
+            </div>
+
+            <!-- Card 39 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">正</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Correct</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Stop (止)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> One, Stop</div>
+                    <div class="readings">On: Sei | Kun: Tada-shii</div>
+                </div>
+            </div>
+
+            <!-- Card 40 -->
+            <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">車</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Car</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Car (車)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Car</div>
+                    <div class="readings">On: Sha | Kun: Kuruma</div>
+                </div>
+            </div>
+
+        </div> <!-- End Page 5 Grid -->
+
+        <div class="page-break"></div>
+
+        <div class="card-grid">
+             <!-- Card 41 -->
+             <div class="flashcard-wrapper">
+                <div class="box front">
+                    <div class="kanji-main">字</div>
+                </div>
+                <div class="box back">
+                    <div class="meaning-main">Character</div>
+                    <div class="detail-row"><span class="label">Radical:</span> Child (子)</div>
+                    <div class="detail-row"><span class="label">Parts:</span> Roof, Child</div>
+                    <div class="readings">On: Ji | Kun: -</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
